@@ -1,6 +1,4 @@
 const apiKey = '1ced348cdf5f3992c1662b3cd5c8af6f';
-const topRatedUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
-
 
 async function request(url) {
     try {
@@ -22,8 +20,11 @@ async function request(url) {
     }
 }
 
-export async function getTopRated() {
-    return request(topRatedUrl);
+export async function getTopRated(page) {
+    if(page == undefined) {
+        page = 1;
+    }
+    return request(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${page}`);
 }
 
 export async function getMovieImgPath(movieId) {
