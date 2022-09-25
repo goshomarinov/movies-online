@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player';
 
 import { Home } from './components/home-page/Home';
 import { Header } from './components/header/Header';
+import { Search } from './components/search/Search';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
       <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/search' element={<Search />} />
       </Routes>
     </div>
   );

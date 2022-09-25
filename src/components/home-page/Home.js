@@ -12,7 +12,6 @@ export const Home = () => {
         try {
             api.getTopRated()
                 .then(movies => {
-                    console.log(movies)
                     setPage(movies.page)
                     setTopRated(movies.results);
                 })

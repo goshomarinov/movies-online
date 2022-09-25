@@ -6,7 +6,6 @@ async function request(url) {
 
         if (response.ok == false) {
             const error = await response.json();
-            throw new Error(error.message)
         }
 
         try {
@@ -31,6 +30,20 @@ export async function getMovieImgPath(movieId) {
     return request(`https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}`);
 }
 
+export async function getTvImgPath(movieId) {
+    return request(`https://api.themoviedb.org/3/tv/${movieId}/images?api_key=${apiKey}`);
+}
+
 export async function getMoviePoster(imgPath) {
     return request(`https://image.tmdb.org/t/p/original/${imgPath}`);
 }
+
+export async function multiSearch(keyword, page) {
+    if(page == undefined) {
+        page = 1;
+    }
+    return request(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${keyword}&page=${page}&include_adult=true`);
+}
+
+
+
