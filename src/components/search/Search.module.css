@@ -47,3 +47,15 @@ form .form-button:hover {
 .pagin-btns button:hover {
     background-color: transparent;
 }
+
+form select {
+    padding: 10px;
+    padding-bottom: 14px;
+    margin-top: 32px;
+    cursor: pointer;
+    background-color: rgb(61, 57, 57);
+    color: #fff;
+    font-size: 22px;
+    border-radius: 8px;
+    border-color: rgb(61, 57, 57);
+}

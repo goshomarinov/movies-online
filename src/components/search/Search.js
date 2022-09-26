@@ -9,6 +9,7 @@ export const Search = () => {
     const [page, setPage] = useState(Number);
     const [value, setValue] = useState({
         search: '',
+        tvOrMovie: 'movies',
     });
 
     const changeHandler = (e) => {
@@ -23,15 +24,24 @@ export const Search = () => {
 
         const {
             search,
+            tvOrMovie,
         } = Object.fromEntries(new FormData(e.target));
 
         try {
-            api.multiSearch(search)
-                .then(movies => {
-                    console.log(movies)
-                    setPage(movies.page)
-                    setMovies(movies.results);
-                })
+
+            if (tvOrMovie == 'movies') {
+                api.movieSearch(search)
+                    .then(movies => {
+                        setPage(movies.page)
+                        setMovies(movies.results);
+                    })
+            } else {
+                api.tvSearch(search)
+                    .then(movies => {
+                        setPage(movies.page)
+                        setMovies(movies.results);
+                    })
+            }
         } catch (err) {
             alert(err.message);
         }
@@ -39,11 +49,19 @@ export const Search = () => {
 
     const nextPage = () => {
         try {
-            api.multiSearch(value.search, page + 1)
-                .then(movies => {
-                    setPage(movies.page)
-                    setMovies(movies.results);
-                })
+            if (value.tvOrMovie == 'movies') {
+                api.movieSearch(value.search, page + 1)
+                    .then(movies => {
+                        setPage(movies.page)
+                        setMovies(movies.results);
+                    })
+            } else {
+                api.tvSearch(value.search, page + 1)
+                    .then(movies => {
+                        setPage(movies.page)
+                        setMovies(movies.results);
+                    })
+            }
         } catch (err) {
             alert(err.message)
         }
@@ -51,19 +69,33 @@ export const Search = () => {
 
     const previousPage = () => {
         try {
-            api.multiSearch(value.search, page - 1)
-                .then(movies => {
-                    setPage(movies.page)
-                    setMovies(movies.results);
-                })
+            if (value.tvOrMovie == 'movies') {
+                api.movieSearch(value.search, page - 1)
+                    .then(movies => {
+                        setPage(movies.page)
+                        setMovies(movies.results);
+                    })
+            } else {
+                api.tvSearch(value.search, page - 1)
+                    .then(movies => {
+                        setPage(movies.page)
+                        setMovies(movies.results);
+                    })
+            }
         } catch (err) {
             alert(err.message)
         }
     }
+
+
     return (
 
         <>
             <form onSubmit={onSubmit}>
+                <select onChange={changeHandler} name="tvOrMovie">
+                    <option value="movies">Movies</option>
+                    <option value="tvShows">TV Shows</option>
+                </select>
                 <input className={searchStyle['form-input']}
                     type='text'
                     name='search'
@@ -75,7 +107,7 @@ export const Search = () => {
             </form>
 
             {movies.length > 0
-                ? movies.map(movie => <MovieCard movie={movie} key={movie.id} />)
+                ? movies.map(movie => <MovieCard movie={movie} type={value.tvOrMovie} key={movie.id} />)
                 : null
             }
 

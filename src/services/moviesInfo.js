@@ -38,11 +38,18 @@ export async function getMoviePoster(imgPath) {
     return request(`https://image.tmdb.org/t/p/original/${imgPath}`);
 }
 
-export async function multiSearch(keyword, page) {
+export async function movieSearch(keyword, page) {
     if(page == undefined) {
         page = 1;
     }
-    return request(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${keyword}&page=${page}&include_adult=true`);
+    return request(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}&include_adult=true`);
+}
+
+export async function tvSearch(keyword, page) {
+    if(page == undefined) {
+        page = 1;
+    }
+    return request(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&page=${page}&query=${keyword}&include_adult=true`);
 }
 
 

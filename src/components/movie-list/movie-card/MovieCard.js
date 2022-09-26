@@ -3,28 +3,29 @@ import cardStyle from '../movie-card/MovieCard.module.css';
 import { useEffect, useState } from "react";
 import * as api from '../../../services/moviesInfo';
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, type }) => {
     const [poster, setPoster] = useState();
 
     useEffect(() => {
         try {
-            api.getMovieImgPath(movie.id)
+            if (type == 'movies') {
+                api.getMovieImgPath(movie.id)
                 .then(path => {
-                    if (path.posters == undefined) {
-                        api.getTvImgPath(movie.id)
-                        .then(path => {
-                                api.getMoviePoster(path.posters[0].file_path)
-                                    .then(img => {
-                                        setPoster(img.url)
-                                    })
-                            })
-                    } else {
-                        api.getMoviePoster(path.posters[0].file_path)
-                            .then(img => {
-                                setPoster(img.url)
-                            })
-                    }
+                    api.getMoviePoster(path.posters[0].file_path)
+                        .then(img => {
+                            setPoster(img.url)
+                        })
                 })
+            } else {
+                api.getTvImgPath(movie.id)
+                .then(path => {
+                    api.getMoviePoster(path.posters[0].file_path)
+                        .then(img => {
+                            setPoster(img.url)
+                        })
+                })
+            }
+            
         } catch (err) {
             alert(err.message);
         }
