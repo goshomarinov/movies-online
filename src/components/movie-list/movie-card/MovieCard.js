@@ -5,7 +5,6 @@ import * as api from '../../../services/moviesInfo';
 
 export const MovieCard = ({ movie, type }) => {
     const [poster, setPoster] = useState();
-
     useEffect(() => {
         try {
             if (type == 'movies') {

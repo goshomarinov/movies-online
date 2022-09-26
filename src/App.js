@@ -6,6 +6,7 @@ import ReactPlayer from 'react-player';
 import { Home } from './components/home-page/Home';
 import { Header } from './components/header/Header';
 import { Search } from './components/search/Search';
+import { TvShows } from './components/tv-shows/TvShows';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 
       <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/tv' element={<TvShows />} />
       <Route path='/search' element={<Search />} />
       </Routes>
     </div>

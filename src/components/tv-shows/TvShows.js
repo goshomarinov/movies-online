@@ -1,34 +1,37 @@
 import * as api from '../../services/moviesInfo';
+import tvShowsStyle from '../tv-shows/TvShows.module.css';
 import { useEffect, useState } from "react";
-import { MovieList } from '../movie-list/MovieList';
+import { MovieCard } from "../movie-list/movie-card/MovieCard";
 
-import buttonsStyle from '../home-page/Home.module.css';
-
-export const Home = () => {
-    const [topRated, setTopRated] = useState([]);
+export const TvShows = () => {
+    const [tvShows, setTvShows] = useState([]);
     const [type, setType] = useState('');
     const [page, setPage] = useState(Number);
 
+
     useEffect(() => {
         try {
-            api.getTopRated()
+            api.getPopularTvShows()
                 .then(movies => {
+                    console.log(movies)
                     setPage(movies.page)
-                    setTopRated(movies.results);
-                    setType('movies')
+                    setTvShows(movies.results);
+                    setType('tvShows')
                 })
+
         } catch (err) {
-            alert(err.message)
+            alert(err.message);
         }
-    }, [])
+    },[])
 
     const nextPage = () => {
         try {
-            api.getTopRated(page + 1)
+            api.getPopularTvShows(page + 1)
                 .then(movies => {
                     setPage(movies.page)
-                    setTopRated(movies.results);
+                    setTvShows(movies.results);
                 })
+
         } catch (err) {
             alert(err.message)
         }
@@ -36,11 +39,12 @@ export const Home = () => {
 
     const previousPage = () => {
         try {
-            api.getTopRated(page - 1)
+            api.getPopularTvShows(page - 1)
                 .then(movies => {
                     setPage(movies.page)
-                    setTopRated(movies.results);
+                    setTvShows(movies.results);
                 })
+
         } catch (err) {
             alert(err.message)
         }
@@ -48,11 +52,12 @@ export const Home = () => {
 
     return (
         <>
-            <MovieList movies={topRated} type={type} />
-            <div className={buttonsStyle['buttons']}>
+            {tvShows.map(movie => <MovieCard movie={movie} type={type} key={movie.id} />)}
+
+            <div className={tvShowsStyle['pagin-btns']}>
                 <button onClick={previousPage}>Previous Page</button>
                 <button onClick={nextPage}>Next Page</button>
             </div>
         </>
     );
-}
+};

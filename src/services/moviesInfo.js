@@ -20,10 +20,17 @@ async function request(url) {
 }
 
 export async function getTopRated(page) {
-    if(page == undefined) {
+    if (page == undefined) {
         page = 1;
     }
     return request(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${page}`);
+}
+
+export async function getPopularTvShows(page) {
+    if (page == undefined) {
+        page = 1;
+    }
+    return request(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&page=${page}`)
 }
 
 export async function getMovieImgPath(movieId) {
@@ -39,14 +46,14 @@ export async function getMoviePoster(imgPath) {
 }
 
 export async function movieSearch(keyword, page) {
-    if(page == undefined) {
+    if (page == undefined) {
         page = 1;
     }
     return request(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}&include_adult=true`);
 }
 
 export async function tvSearch(keyword, page) {
-    if(page == undefined) {
+    if (page == undefined) {
         page = 1;
     }
     return request(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&page=${page}&query=${keyword}&include_adult=true`);

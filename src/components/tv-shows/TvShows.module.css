@@ -1,0 +1,20 @@
+.pagin-btns {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagin-btns button {
+    padding: 12px;
+    cursor: pointer;
+    background-color: gray;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 8px;
+    border-color: gray;
+}
+
+.pagin-btns button:hover {
+    background-color: transparent;
+}

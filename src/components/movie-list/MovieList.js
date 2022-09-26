@@ -1,7 +1,7 @@
 import { MovieCard } from "./movie-card/MovieCard";
 
-export const MovieList = ({movies}) => {
+export const MovieList = ({movies, type}) => {
     return (
-        movies.map(movie => <MovieCard movie={movie} key={movie.id} />)
+        movies.map(movie => <MovieCard movie={movie} type={type} key={movie.id} />)
     );
 }
