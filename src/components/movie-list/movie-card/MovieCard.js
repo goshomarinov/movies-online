@@ -1,6 +1,7 @@
 import cardStyle from '../movie-card/MovieCard.module.css';
 
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import * as api from '../../../services/moviesInfo';
 
 export const MovieCard = ({ movie, type }) => {
@@ -33,7 +34,7 @@ export const MovieCard = ({ movie, type }) => {
     return (
         <div className={cardStyle['home-container']}>
             <div className={cardStyle['card-container']}>
-                <img src={poster} alt='picture' />
+                <Link to={`/details/${movie.id}/${type}`}><img src={poster} alt='picture'/></Link>
                 <h3>{movie.title || movie.name}</h3>
             </div>
         </div>

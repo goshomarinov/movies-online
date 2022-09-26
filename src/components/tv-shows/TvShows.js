@@ -13,7 +13,6 @@ export const TvShows = () => {
         try {
             api.getPopularTvShows()
                 .then(movies => {
-                    console.log(movies)
                     setPage(movies.page)
                     setTvShows(movies.results);
                     setType('tvShows')
