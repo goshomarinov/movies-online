@@ -8,6 +8,7 @@ import { Header } from './components/header/Header';
 import { Search } from './components/search/Search';
 import { TvShows } from './components/tv-shows/TvShows';
 import { Details } from './components/details/Details';
+import { TvShowDetails } from './components/details/TvShowDetails';
 
 
 function App() {
@@ -17,10 +18,11 @@ function App() {
       <Header />
 
       <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/tv' element={<TvShows />} />
-      <Route path='/details/:id/:type' element={<Details />} />
-      <Route path='/search' element={<Search />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/tv' element={<TvShows />} />
+        <Route path='/details/:id/:movie' element={<Details />} />
+        <Route path='/details/:id/:type/:seasons' element={<TvShowDetails />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
     </div>
   );

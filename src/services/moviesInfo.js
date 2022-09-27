@@ -19,12 +19,23 @@ async function request(url) {
     }
 }
 
-export async function getDetails(id, type) {
-    if (type == 'movies') {
-        return request(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
-    } else {
-        return request(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}`);
+export async function getSeasons(id, seasons) {
+    const result = [];
+
+    for (let i = 1; i <= seasons; i++) {
+        const res = await request(`https://api.themoviedb.org/3/tv/${id}/season/${i}?api_key=${apiKey}`);
+
+        result.push(res);
     }
+    return result;
+}
+
+export async function getMovieDetails(id) {
+    return request(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
+}
+
+export async function getTvShowDetails(id) {
+    return request(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}`);
 }
 
 export async function getTopRated(page) {

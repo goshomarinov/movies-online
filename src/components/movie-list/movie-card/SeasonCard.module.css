@@ -1,0 +1,22 @@
+.card-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 22px 22px;
+    margin-top: 80px;
+}
+
+.card-container img {
+    width: 300px;
+    margin-bottom: 16px;
+}
+
+.card-container img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    margin-bottom: 12px;
+}
+
+.card-container h3 {
+    margin-top: 0px;
+}

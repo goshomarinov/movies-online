@@ -103,7 +103,7 @@ export const Search = () => {
                     value={value.search}
                     onChange={changeHandler}
                 />
-                <input className={searchStyle['form-button']} type='submit' value='Search' />
+                <input className={searchStyle['form-button']} type='submit' disabled={!value.search} value='Search' />
             </form>
 
             {movies.length > 0

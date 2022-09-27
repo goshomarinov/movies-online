@@ -34,7 +34,10 @@ export const MovieCard = ({ movie, type }) => {
     return (
         <div className={cardStyle['home-container']}>
             <div className={cardStyle['card-container']}>
-                <Link to={`/details/${movie.id}/${type}`}><img src={poster} alt='picture'/></Link>
+                {type == 'movies' 
+                   ? <Link to={`/details/${movie.id}/movie`}><img src={poster} alt='picture'/></Link>
+                   : <Link to={`/details/${movie.id}/${type}/seasons`}><img src={poster} alt='picture'/></Link>              
+                }
                 <h3>{movie.title || movie.name}</h3>
             </div>
         </div>
