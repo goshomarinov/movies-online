@@ -29,11 +29,13 @@ export const Player = () => {
             {season == undefined
                 ? <div className={playerStyles['container']}>
                     <h1>{name}</h1>
-                    <ReactPlayer controls={true} />
+                    <p>The website is still at development process and the video is demo</p>
+                    <ReactPlayer controls={true} url='https://www.youtube.com/watch?v=8BphNy9ZQMU' />
                 </div>
                 : <div className={playerStyles['container']}>
                     <h1>{name} Season {season} Episode {episode}</h1>
-                    <ReactPlayer controls={true} />
+                    <p>The website is still at development process and the video is demo</p>
+                    <ReactPlayer controls={true} url='https://www.youtube.com/watch?v=8BphNy9ZQMU' />
                     <div className={playerStyles['container-btn']}>
                         {buttons.map(b => <button key={b} onClick={clickHandler}>{b}</button>)}
                     </div>

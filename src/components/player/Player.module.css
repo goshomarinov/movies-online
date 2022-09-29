@@ -7,7 +7,7 @@
 .container-btn {
     display: flex;
     gap: 22px;
-
+    margin-top: 16px;
 }
 
 .container-btn button {
