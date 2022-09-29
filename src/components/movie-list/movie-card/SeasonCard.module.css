@@ -1,13 +1,15 @@
 .card-container {
-    width: 400px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     margin: 22px 22px;
+    margin-left: 50px;
     margin-top: 80px;
+    border: 2px solid gray;
 }
 
 .card-container img {
-    width: 300px;
+    width: 246px;
     margin-bottom: 16px;
 }
 
@@ -19,4 +21,23 @@
 
 .card-container h3 {
     margin-top: 0px;
+}
+
+.card-container a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0px 0px 12px 0px;
+    letter-spacing: 6px;
+    border: 2px solid;
+    padding: 6px 6px;
+    background-color: rgb(26, 46, 6);
+    border-color: rgb(26, 46, 6);
+    color: #FFF;
+}
+
+.card-container a:hover {
+    background-color: transparent;
+    color: rgb(26, 46, 6);
 }

@@ -32,10 +32,11 @@ export const TvShowDetails = () => {
 
     useEffect(() => {
         api.getSeasons(id, movie.number_of_seasons)
-        .then(res => {
-            setSeasons(res);
-        })
-    },[movie.id])
+            .then(res => {
+                setSeasons(res);
+            })
+    }, [movie.id])
+
     return (
         <>
             <div className={detailsStyle['container']}>
@@ -56,7 +57,7 @@ export const TvShowDetails = () => {
                 </div>
             </div>
             <>
-                {seasons.map(s => <SeasonCard name={movie.name} seasonNum={s.season_number} poster={poster} />)}
+                {seasons.map(s => <SeasonCard key={s._id} season={s} poster={poster} name={movie.name} />)}
             </>
         </>
     );

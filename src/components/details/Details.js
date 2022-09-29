@@ -44,7 +44,7 @@ export const Details = () => {
 
                 </div>
             </div>
-            <Link className={detailsStyle['btn']}>Watch Online</Link>
+            <Link to={`/play/${movie.title}`} className={detailsStyle['btn']}>Watch Online</Link>
         </>
     );
 }
