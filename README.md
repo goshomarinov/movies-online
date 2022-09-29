@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+Movies Online- React App + RESTful API
+-The Movie app holds a searcheable database of movies and tv shows.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+App Details
+-The app is based on JavaScript + React.
+-The app is deployed.
+-Easy accessible no registration required.
+-The website is still at development process and the video is demo,still searching for                good streamable server
 
-## Available Scripts
+-Live demo: https://lively-axolotl-674758.netlify.app
 
-In the project directory, you can run:
 
-### `npm start`
+RESTful API
+-Movie database with very good detailed documentation: https://developers.themoviedb.org
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The following endpoints that the App uses:
+-baseUrlDb: https://api.themoviedb.org
+-baseUrlImg: https://image.tmdb.org
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-For Movies
+GET baseUrlDb/3/movie/popular?api_key=${apiKey}&page=${page} - Most popular movies.
+GET baseUrlDb/3/movie/${id}?api_key=${apiKey} - Movie details by ID.
+     -For movie poster
+       GET baseUrlDb/3/movie/${movieId}/images?api_key=${apiKey} - Movie image path by ID.
+       GET baseUrlImg/t/p/original/${imgPath} - Movie poster.
 
-### `npm test`
+-For TV Shows Collection
+GET baseUrlDb/3/tv/popular?api_key=${apiKey}&page=${page} - Most popular tv shows.
+GET baseUrlDb/3/tv/${id}?api_key=${apiKey} - Tv show details by ID.
+     -For tv show poster
+       GET baseUrlDb/3/tv/${movieId}/images?api_key=${apiKey} - Tv show image path by ID.
+       GET baseUrlImg/t/p/original/${imgPath} - Tv show poster.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-For TV/Movies Search
+-The form has options for movie or tv show to search
+     -Movie
+        GET baseUrlDb/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}&include_adult=true
+     -Tv Show
+        GET baseUrlDb/3/search/tv?api_key=${apiKey}&page=${page}&query=${keyword}&include_adult=true

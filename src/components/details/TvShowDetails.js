@@ -1,7 +1,7 @@
 import * as api from '../../services/moviesInfo';
 import detailsStyle from '../details/Details.module.css';
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { SeasonCard } from '../movie-list/movie-card/SeasonCard';
 
 

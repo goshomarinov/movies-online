@@ -6,6 +6,7 @@ async function request(url) {
 
         if (response.ok == false) {
             const error = await response.json();
+            throw new Error(error.message)
         }
 
         try {
